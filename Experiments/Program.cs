@@ -1,4 +1,4 @@
-﻿using System;
+﻿using BenchmarkDotNet.Running;
 
 namespace Experiments
 {
@@ -6,7 +6,7 @@ namespace Experiments
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+           BenchmarkRunner.Run<Benchmark>();
         }
     }
 }
