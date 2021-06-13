@@ -2,6 +2,7 @@
 using AutoMapper;
 using Experiments.Domain;
 using Experiments.Dtos;
+using Mapster;
 
 namespace Experiments
 {
@@ -18,6 +19,11 @@ namespace Experiments
 
         private static readonly IMapper AutoMapper =
             new Mapper(new MapperConfiguration(ex => ex.AddProfile(new AutoMapperProfile())));
+
+        public static CatDto MapsterAdaptExperiment()
+        {
+            return RegularCat.Adapt<CatDto>();
+        }
 
         public MapperExperiments()
         {

@@ -12,5 +12,7 @@ namespace Experiments
         [Benchmark] public CatDto ExpressMap() => MapperExperiments.ExpressMapperExperiment();
 
         [Benchmark] public CatDto AutoMap() => MapperExperiments.AutoMapperExperiment();
+        
+        [Benchmark] public CatDto MapsterAdapt() => MapperExperiments. MapsterAdaptExperiment();
     }
 }
