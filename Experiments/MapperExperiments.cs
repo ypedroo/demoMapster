@@ -1,5 +1,6 @@
 ﻿using System;
 using AutoMapper;
+using BenchmarkDotNet.Disassemblers;
 using Experiments.Domain;
 using Experiments.Dtos;
 using Mapster;
@@ -17,8 +18,25 @@ namespace Experiments
             Race = "Siamese"
         };
 
+        private static readonly TypeAdapterConfig typeAdapterConfig = GetMapsterConfig();
+
         private static readonly IMapper AutoMapper =
             new Mapper(new MapperConfiguration(ex => ex.AddProfile(new AutoMapperProfile())));
+
+        private static readonly MapsterMapper.IMapper MapsterConfig = new MapsterMapper.Mapper(typeAdapterConfig);
+
+        // https://github.com/MapsterMapper/Mapster/wiki/Custom-mapping
+        public static TypeAdapterConfig GetMapsterConfig()
+        {
+            var config = new TypeAdapterConfig();
+            config.NewConfig<CatModel, CatDto>();
+            return config;
+        }
+
+        public static CatDto MapsterAdaptWithConfigurationExperiment()
+        {
+            return MapsterConfig.From(RegularCat).AdaptToType<CatDto>();
+        }
 
         public static CatDto MapsterAdaptExperiment()
         {
