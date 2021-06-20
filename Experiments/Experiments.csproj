@@ -6,10 +6,25 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="AutoMapper" Version="10.1.1" />
-      <PackageReference Include="BenchmarkDotNet" Version="0.13.0" />
-      <PackageReference Include="Expressmapper" Version="1.9.1" />
-      <PackageReference Include="Mapster" Version="7.2.0" />
+        <PackageReference Include="AutoMapper" Version="10.1.1" />
+        <PackageReference Include="BenchmarkDotNet" Version="0.13.0" />
+        <PackageReference Include="Expressmapper" Version="1.9.1" />
+        <PackageReference Include="Mapster" Version="7.2.0" />
     </ItemGroup>
+
+    <ItemGroup>
+        <Generated Include="**\*.g.cs" />
+    </ItemGroup>
+
+    <Target Name="Mapster" AfterTargets="AfterBuild">
+        <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet tool restore" />
+        <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet mapster model -a &quot;$(TargetDir)$(ProjectName).dll&quot;" />
+        <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet mapster extension -a &quot;$(TargetDir)$(ProjectName).dll&quot;" />
+        <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet mapster mapper -a &quot;$(TargetDir)$(ProjectName).dll&quot;" />
+    </Target>
+
+    <Target Name="CleanGenerated">
+        <Delete Files="@(Generated)" />
+    </Target>
 
 </Project>

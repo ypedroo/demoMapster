@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 
 namespace Experiments.Domain
 {
-    public class CatModel
+    public partial class CatDto
     {
         public Guid CatId { get; set; }
         public string Name { get; set; }

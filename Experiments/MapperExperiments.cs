@@ -9,7 +9,7 @@ namespace Experiments
 {
     public class MapperExperiments
     {
-        private static readonly CatModel RegularCat = new()
+        private static readonly Cat RegularCat = new()
         {
             CatId = Guid.NewGuid(),
             Age = 2,
@@ -29,39 +29,46 @@ namespace Experiments
         public static TypeAdapterConfig GetMapsterConfig()
         {
             var config = new TypeAdapterConfig();
-            config.NewConfig<CatModel, CatDto>();
+            config.NewConfig<Cat, Dtos.CatDto>();
             return config;
         }
 
-        public static CatDto MapsterAdaptWithConfigurationExperiment()
+        public static Domain.CatDto MapsterCodegenexperiment()
         {
-            return MapsterConfig.From(RegularCat).AdaptToType<CatDto>();
+            return RegularCat.AdaptToDto();
+        }
+        // dotnet new tool-manifest
+        // dotnet tool install Mapster.Tool
+
+        public static Dtos.CatDto MapsterAdaptWithConfigurationExperiment()
+        {
+            return MapsterConfig.From(RegularCat).AdaptToType<Dtos.CatDto>();
         }
 
-        public static CatDto MapsterAdaptExperiment()
+        public static Dtos.CatDto MapsterAdaptExperiment()
         {
-            return RegularCat.Adapt<CatDto>();
+            return RegularCat.Adapt<Dtos.CatDto>();
         }
 
         public MapperExperiments()
         {
-            ExpressMapper.Mapper.Register<CatModel, CatDto>();
+            ExpressMapper.Mapper.Register<Cat, Dtos.CatDto>();
         }
 
-        public static CatDto AutoMapperExperiment()
+        public static Dtos.CatDto AutoMapperExperiment()
         {
-            return AutoMapper.Map<CatDto>(RegularCat);
+            return AutoMapper.Map<Dtos.CatDto>(RegularCat);
         }
 
-        public static CatDto ExpressMapperExperiment()
+        public static Dtos.CatDto ExpressMapperExperiment()
         {
-            return ExpressMapper.Mapper.Map<CatModel, CatDto>(RegularCat);
+            return ExpressMapper.Mapper.Map<Cat, Dtos.CatDto>(RegularCat);
         }
 
-        public static CatDto ManualMapperExperiment()
+        public static Dtos.CatDto ManualMapperExperiment()
         {
             var cat = RegularCat;
-            return new CatDto()
+            return new Dtos.CatDto()
             {
                 Age = RegularCat.Age,
                 FavoriteToy = RegularCat.FavoriteToy,
@@ -75,8 +82,9 @@ namespace Experiments
         {
             public AutoMapperProfile()
             {
-                CreateMap<CatModel, CatDto>();
+                CreateMap<Cat, Dtos.CatDto>();
             }
         }
+
     }
 }

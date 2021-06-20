@@ -13,12 +13,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Experiments/Domain/Cat.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Experiments/Domain/CatModel.cs">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/Experiments/Dtos/CatDto.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Experiments/Experiments.csproj">
           <value>
             <set />
           </value>
@@ -33,7 +43,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Experiments/Models/CatMapper.g.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Experiments/Models/CatModelMapper.g.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Experiments/Program.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/COM_RT_IntergracaoProfimetrics/IntegracaoProfimetricsPromotional/IntegracaoProfimetricsPromotional/Helpers/IntegracaoProfimetricsPromotionalHelper.cs">
           <value>
             <set />
           </value>
