@@ -23,6 +23,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/Experiments/Domain/Person.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/Experiments/Dtos/CatDto.cs">
           <value>
             <set />
@@ -49,6 +54,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/Experiments/Models/CatModelMapper.g.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Experiments/Models/PersonMapper.g.cs">
           <value>
             <set />
           </value>

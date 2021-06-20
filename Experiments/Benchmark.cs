@@ -1,5 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Order;
+using Experiments.Domain;
 using Experiments.Dtos;
 
 namespace Experiments
@@ -8,21 +9,21 @@ namespace Experiments
     public class Benchmark
     {
         [Benchmark]
-        public CatDto ManualMap() => MapperExperiments.ManualMapperExperiment();
+        public CatDtoWritten ManualMap() => MapperExperiments.ManualMapperExperiment();
 
         [Benchmark]
-        public CatDto ExpressMap() => MapperExperiments.ExpressMapperExperiment();
+        public CatDtoWritten ExpressMap() => MapperExperiments.ExpressMapperExperiment();
 
         [Benchmark]
-        public CatDto AutoMap() => MapperExperiments.AutoMapperExperiment();
+        public CatDtoWritten AutoMap() => MapperExperiments.AutoMapperExperiment();
 
         [Benchmark]
-        public CatDto MapsterAdapt() => MapperExperiments.MapsterAdaptExperiment();
+        public CatDtoWritten MapsterAdapt() => MapperExperiments.MapsterAdaptExperiment();
 
         [Benchmark]
-        public CatDto MapsterAdaptWithConfiguration() => MapperExperiments.MapsterAdaptWithConfigurationExperiment();
+        public CatDtoWritten MapsterAdaptWithConfiguration() => MapperExperiments.MapsterAdaptWithConfigurationExperiment();
 
-        [Benchmark]
-        public Domain.CatDto MapsterCodeGen() => MapperExperiments.MapsterCodegenexperiment();
+        // [Benchmark]
+        // public CatDto MapsterCodeGen() => MapperExperiments.MapsterCodegenexperiment();
     }
 }
