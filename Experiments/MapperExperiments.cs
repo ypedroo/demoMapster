@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using AutoMapper;
-using BenchmarkDotNet.Disassemblers;
 using Experiments.Domain;
 using Experiments.Dtos;
 using Mapster;
-// using CatDto = Experiments.Domain.CatDto;
 
 namespace Experiments
 {
@@ -52,12 +50,12 @@ namespace Experiments
             return config;
         }
 
-        // public static CatDto MapsterCodegenexperiment()
-        // {
-        //     return RegularCat.AdaptToDto();
-        // }
-        
-        
+        public static CatDto MapsterCodegenexperiment()
+        {
+            return RegularCat.AdaptToDto();
+        }
+
+
         // dotnet new tool-manifest
         // dotnet tool install Mapster.Tool
 
@@ -88,7 +86,7 @@ namespace Experiments
 
         public static CatDtoWritten ManualMapperExperiment()
         {
-            var catDto = new CatDtoWritten()
+            var catDto = new CatDtoWritten
             {
                 Age = RegularCat.Age,
                 FavoriteToy = RegularCat.FavoriteToy,
@@ -96,9 +94,16 @@ namespace Experiments
                 Race = RegularCat.Race,
                 CatId = RegularCat.CatId
             };
-            foreach (var i in RegularCat.Owners)
+            var owners = new List<Person>();
+            for (var i = 0; i < RegularCat.Owners.Count; i++)
             {
-                catDto.Owners.Add(i);
+                owners.Add(new Person
+                {
+                    Id = RegularCat.Owners[i].Id,
+                    FirstName = RegularCat.Owners[i].FirstName,
+                    LastName = RegularCat.Owners[i].LastName,
+                    Phone = RegularCat.Owners[i].Phone
+                });
             }
 
             return catDto;

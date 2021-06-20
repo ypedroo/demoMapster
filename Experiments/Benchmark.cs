@@ -23,7 +23,7 @@ namespace Experiments
         [Benchmark]
         public CatDtoWritten MapsterAdaptWithConfiguration() => MapperExperiments.MapsterAdaptWithConfigurationExperiment();
 
-        // [Benchmark]
-        // public CatDto MapsterCodeGen() => MapperExperiments.MapsterCodegenexperiment();
+        [Benchmark]
+        public Domain.CatDto MapsterCodeGen() => MapperExperiments.MapsterCodegenexperiment();
     }
 }
